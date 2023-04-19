@@ -1,4 +1,4 @@
-name: Main
+name: Build & Release
 
 on:
   pull_request:
@@ -11,7 +11,6 @@ on:
         - master
         - develop 
 
-name: "Build & Release"
 
 jobs:
   build:

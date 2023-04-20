@@ -28,15 +28,17 @@ jobs:
         - run: flutter test
 
         - run: flutter build apk --split-per-abi --release
-
-        - run: |
-            flutter build ios --no-codesign
+        
+        - name: Build iOS app
+          run: flutter build ios --no-codesign
+        - name: Create IPA file
+          run: |
             cd build/ios/iphoneos
             mkdir Payload
-            cd Pyload
-            ln - s ../Runner.app
+            cd Payload
+            ln -s ../Runner.app
             cd ..
-            zip - r app-ipa Payload
+            zip -r app.ipa Payload
             
         - name: Push to Releases
           uses: ncipollo/release-action@v1

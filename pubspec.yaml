@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
     
+  flutter_animate: ^4.1.1+1
   flutter_riverpod: ^2.3.5
   font_awesome_flutter: ^10.4.0
   freezed_annotation: ^2.2.0

@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+
+class RandomUserTheme {
+  static final darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    primaryColor: Colors.teal,
+    textTheme: const TextTheme(
+      headlineLarge: TextStyle(
+        fontSize: 24.0,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: 20.0,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+      headlineSmall: TextStyle(
+        fontSize: 16.0,
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+      ),
+      bodyLarge: TextStyle(fontSize: 24.0, color: Colors.white),
+      bodyMedium: TextStyle(fontSize: 20.0, color: Colors.white),
+      bodySmall: TextStyle(fontSize: 16.0, color: Colors.white),
+    ),
+  );
+}

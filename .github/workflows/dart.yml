@@ -29,7 +29,7 @@ jobs:
 
         - run: flutter build apk --split-per-abi --release
         
-        - name: Build iOS app
+        - name: Build iOS App
           run: flutter build ios --no-codesign
         - name: Create IPA file
           run: |
@@ -44,7 +44,7 @@ jobs:
           uses: ncipollo/release-action@v1
           with: 
             artifacts: "build/app/outputs/apk/debug/*, build/ios/iphoneos/app.ipa"
-            tags: v1.0.${{ github.run_number }}
+            tags: "refs/tags/v1.0.${{ github.run_number }}"
             token: ${{ secrets.TOKEN }}
 
 

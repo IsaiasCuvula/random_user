@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import '../presentation/pages/home_page.dart';
 
 class RandomUser extends StatelessWidget {
   const RandomUser({super.key});

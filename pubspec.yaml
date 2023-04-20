@@ -11,10 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-
-  
-  cupertino_icons: ^1.0.2
+    
+  flutter_riverpod: ^2.3.5
+  font_awesome_flutter: ^10.4.0
+  freezed_annotation: ^2.2.0
+  http: ^0.13.5
+  json_annotation: ^4.8.0
 
 dev_dependencies:
   flutter_test:

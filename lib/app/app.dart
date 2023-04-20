@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../presentation/pages/home_page.dart';
+import 'package:random_user/config/theme.dart';
+import 'package:random_user/presentation/presentation.dart';
 
 class RandomUser extends StatelessWidget {
   const RandomUser({super.key});
@@ -9,9 +10,7 @@ class RandomUser extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Random User',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: RandomUserTheme.darkTheme,
       home: const HomePage(),
     );
   }

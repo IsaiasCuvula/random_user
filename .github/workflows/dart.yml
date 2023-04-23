@@ -1,4 +1,4 @@
-name: Dart CI
+name: Dart CI/CD
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
 
         #- run: flutter test
 
-        - run: flutter build apk --split-per-abi --release
+        - run: flutter build apk --debug --split-per-abi
         
         - name: Build iOS App
           run: flutter build ios --no-codesign
@@ -43,7 +43,7 @@ jobs:
         - name: Push to Releases
           uses: ncipollo/release-action@v1
           with: 
-            artifacts: "build/app/outputs/apk/debug/*, build/ios/iphoneos/app.ipa"
+            artifacts: "build/app/outputs/apk/debug/*.apk, build/ios/iphoneos/app.ipa"
             tag: "refs/tags/v1.0.${{ github.run_number }}"
             token: ${{ secrets.TOKEN }}
 

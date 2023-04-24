@@ -5,7 +5,7 @@
 A simple app to demonstrate how to implement Flutter with Clean Architecture, Riverpod or flutter_bloc & RESTful API.
 
 
-## "Production level" implementations
+## Production level implementations
 
 - CI/CD with [GitHub Actions](https://github.com/features/actions)
 

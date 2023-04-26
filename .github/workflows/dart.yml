@@ -23,8 +23,11 @@ jobs:
           with:
             channel: stable
 
-        - run: flutter pub get
-        - run: flutter analyze
+        - name: Install dependencies
+          run: flutter pub get
+
+        - name: Flutter analyze
+          run: flutter analyze
 
         #- run: flutter test
 

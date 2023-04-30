@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'package:random_user/data/data.dart';
 import 'package:random_user/domain/domain.dart';
-import 'http_client.dart';
 import 'package:http/http.dart' as http;
 
 class UserHttpClientImpl implements UserHttpClient {
@@ -9,7 +9,8 @@ class UserHttpClientImpl implements UserHttpClient {
   UserHttpClientImpl({required this.client});
 
   @override
-  Future request({required String url, Map? body, Map? header}) async {
+  Future<UserModel> request(
+      {required String url, Map? body, Map? header}) async {
     final Map<String, String> defaultHeaders =
         header?.cast<String, String>() ?? {}
           ..addAll({
@@ -23,9 +24,10 @@ class UserHttpClientImpl implements UserHttpClient {
     return _handleRespose(response);
   }
 
-  dynamic _handleRespose(http.Response response) {
+  Future<UserModel> _handleRespose(http.Response response) async {
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      return json.decode(response.body);
+      final jsonData = json.decode(response.body);
+      return UserModel.fromJson(jsonData);
     } else {
       throw ServerException();
     }

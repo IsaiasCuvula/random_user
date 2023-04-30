@@ -3,5 +3,5 @@ import 'package:random_user/presentation/presentation.dart';
 
 abstract class UserRemoteDataSource {
   Future<UserModel> getRandomUser();
-  Future<ListUserModel> getListOfRandomUsers(int number);
+  Future<ListUsersModel> getListOfRandomUsers(int number);
 }

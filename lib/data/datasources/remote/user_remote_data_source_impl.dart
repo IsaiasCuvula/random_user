@@ -2,19 +2,19 @@ import 'package:random_user/data/data.dart';
 import 'package:random_user/presentation/presentation.dart';
 
 class UserRemoteDataSourceImpl implements UserRemoteDataSource {
-  final UserHttpClient userClient;
+  final UserHttpClient httpClient;
 
-  UserRemoteDataSourceImpl({required this.userClient});
+  UserRemoteDataSourceImpl({required this.httpClient});
 
   @override
-  Future<ListUserModel> getListOfRandomUsers(int number) async {
+  Future<ListUsersModel> getListOfRandomUsers(int number) async {
     final url = '${Constants.apiUrl}/?results=$number';
-    return await userClient.request(url: url);
+    return await httpClient.request(url: url);
   }
 
   @override
   Future<UserModel> getRandomUser() async {
     const url = Constants.apiUrl;
-    return await userClient.request(url: url);
+    return await httpClient.request(url: url);
   }
 }

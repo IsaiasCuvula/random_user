@@ -1,7 +1,7 @@
 part of 'user_entity.dart';
 
 @immutable
-class Username {
+class Username extends Equatable {
   final String title;
   final String first;
   final String last;
@@ -11,4 +11,7 @@ class Username {
     required this.first,
     required this.last,
   });
+
+  @override
+  List<Object?> get props => [title, first, last];
 }

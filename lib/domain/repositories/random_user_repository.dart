@@ -3,5 +3,5 @@ import 'package:random_user/presentation/presentation.dart';
 
 abstract class RandomUserRepository {
   Future<UserEntity> getRandomUser();
-  Stream<ListUser> getListOfRandomUsers(int number);
+  Future<ListUsers> getListOfRandomUsers(int number);
 }

@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
-part 'username.dart';
-part 'picture.dart';
-part 'timezone.dart';
-part 'location.dart';
-part 'coordinates.dart';
+part 'username_model.dart';
+part 'picture_model.dart';
+part 'timezone_model.dart';
+part 'location_model.dart';
+part 'coordinates_model.dart';
 
 @freezed
 class UserModel with _$UserModel {

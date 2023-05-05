@@ -13,12 +13,8 @@ class HomePage extends StatelessWidget {
         child: Consumer(builder: (ctx, ref, child) {
           final randomUserState = ref.watch(randomUserProvider);
           final user = randomUserState.user;
-          print(user?.city);
-          print(user?.email);
-          print(user?.gender);
-
           return Text(
-            'Welcome to the home page ${user?.city}',
+            'Welcome to the home page ${user?.gender}',
           ).animate().fade().scale();
         }),
       ),

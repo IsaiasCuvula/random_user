@@ -1,8 +1,5 @@
-import 'package:random_user/data/datasources/datasources.dart';
-import 'package:random_user/data/mappers/user_mapper.dart';
-import 'package:random_user/domain/entities/userentity/user_entity.dart';
-import 'package:random_user/domain/exceptions/exceptions.dart';
-import 'package:random_user/domain/repositories/random_user_repository.dart';
+import 'package:random_user/data/data.dart';
+import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/utils/types.dart';
 
 class RandomUserRepositoryImpl extends RandomUserRepository {
@@ -14,17 +11,18 @@ class RandomUserRepositoryImpl extends RandomUserRepository {
   Future<ListUsers> getListOfRandomUsers(int number) async {
     try {
       final listUser = await remoteDataSource.getListOfRandomUsers(number);
-      return UserMapper.listUserMapper(listUser);
+      //return UserMapper.listUserMapper(listUser);
+      return [];
     } on ServerException {
       throw ServerException();
     }
   }
 
   @override
-  Future<UserEntity> getRandomUser() async {
+  Future<RandomUser> getRandomUser() async {
     try {
       final userModel = await remoteDataSource.getRandomUser();
-      return UserMapper.userMapper(userModel);
+      return UserMapper.toEntity(userModel);
     } on ServerException {
       throw ServerException();
     }

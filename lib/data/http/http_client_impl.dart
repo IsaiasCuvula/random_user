@@ -27,7 +27,7 @@ class UserHttpClientImpl implements UserHttpClient {
   Future<RandomUserModel> _handleRespose(http.Response response) async {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       final jsonData = json.decode(response.body);
-      return RandomUserModel.fromJson(jsonData);
+      return UserMapper.fromJson(jsonData);
     } else {
       throw ServerException();
     }

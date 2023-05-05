@@ -13,7 +13,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   }
 
   @override
-  Future<UserModel> getRandomUser() async {
+  Future<RandomUserModel> getRandomUser() async {
     const url = Constants.apiUrl;
     return await httpClient.request(url: url);
   }

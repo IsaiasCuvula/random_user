@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:random_user/presentation/providers/providers.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,7 +10,17 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: const Text('Welcome to the home page').animate().fade().scale(),
+        child: Consumer(builder: (ctx, ref, child) {
+          final randomUserState = ref.watch(randomUserProvider);
+          final user = randomUserState.user;
+          print(user?.city);
+          print(user?.email);
+          print(user?.gender);
+
+          return Text(
+            'Welcome to the home page ${user?.city}',
+          ).animate().fade().scale();
+        }),
       ),
     );
   }

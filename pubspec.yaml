@@ -1,7 +1,7 @@
 name: random_user
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -16,9 +16,8 @@ dependencies:
   flutter_animate: ^4.1.1+1
   flutter_riverpod: ^2.3.5
   font_awesome_flutter: ^10.4.0
-  freezed_annotation: ^2.2.0
   http: ^0.13.5
-  json_annotation: ^4.8.0
+
 
 dev_dependencies:
   flutter_test:
@@ -26,8 +25,7 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
   build_runner: ^2.3.3
-  freezed: ^2.3.2
-  json_serializable: ^6.6.1
+ 
 
 flutter:
   generate: true

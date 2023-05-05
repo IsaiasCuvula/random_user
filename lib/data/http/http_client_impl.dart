@@ -9,7 +9,7 @@ class UserHttpClientImpl implements UserHttpClient {
   UserHttpClientImpl({required this.client});
 
   @override
-  Future<UserModel> request(
+  Future<RandomUserModel> request(
       {required String url, Map? body, Map? header}) async {
     final Map<String, String> defaultHeaders =
         header?.cast<String, String>() ?? {}
@@ -24,10 +24,10 @@ class UserHttpClientImpl implements UserHttpClient {
     return _handleRespose(response);
   }
 
-  Future<UserModel> _handleRespose(http.Response response) async {
+  Future<RandomUserModel> _handleRespose(http.Response response) async {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       final jsonData = json.decode(response.body);
-      return UserModel.fromJson(jsonData);
+      return RandomUserModel.fromJson(jsonData);
     } else {
       throw ServerException();
     }

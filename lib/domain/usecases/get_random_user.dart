@@ -5,7 +5,7 @@ class GetRandomUser {
 
   GetRandomUser(this._userRepository);
 
-  Future<UserEntity> call() async {
+  Future<RandomUser> call() async {
     return await _userRepository.getRandomUser();
   }
 }

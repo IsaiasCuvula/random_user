@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RandomUserTheme {
   static final darkTheme = ThemeData(
     brightness: Brightness.dark,
-    primaryColor: Colors.teal,
+    primaryColor: Colors.green,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontSize: 24.0,

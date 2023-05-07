@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:random_user/config/router/router.dart';
 import 'package:random_user/presentation/presentation.dart';
 
 class UserCard extends StatelessWidget {
@@ -42,10 +44,7 @@ class UserCard extends StatelessWidget {
                 flex: 0,
                 child: Text(
                   'Isaias Cuvula',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge
-                      ?.copyWith(color: Colors.green),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
               Expanded(
@@ -56,6 +55,7 @@ class UserCard extends StatelessWidget {
                       child: UserIconAction(
                         displayIcon: Icons.person_pin,
                         onPressed: () {
+                          context.pushNamed(RoutesName.userDetail);
                           //to be definid what to do, maybe share te user info
                         },
                       ),

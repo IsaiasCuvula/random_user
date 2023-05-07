@@ -20,9 +20,9 @@ class RandomUserTheme {
         color: Colors.white,
         fontWeight: FontWeight.bold,
       ),
-      bodyLarge: TextStyle(fontSize: 24.0, color: Colors.white),
-      bodyMedium: TextStyle(fontSize: 20.0, color: Colors.white),
-      bodySmall: TextStyle(fontSize: 16.0, color: Colors.white),
+      bodyLarge: TextStyle(fontSize: 24.0, color: Colors.green),
+      bodyMedium: TextStyle(fontSize: 20.0, color: Colors.green),
+      bodySmall: TextStyle(fontSize: 16.0, color: Colors.green),
     ),
   );
 }

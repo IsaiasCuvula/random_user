@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:random_user/config/router/router.dart';
 import 'package:random_user/presentation/presentation.dart';
+import 'package:random_user/domain/entities/random_user.dart' as r_user;
 
 final routes = [
   GoRoute(
@@ -14,11 +15,11 @@ final routes = [
         path: 'user-detail',
         name: RoutesName.userDetail,
         parentNavigatorKey: RoutesConfig.navigationKey,
-        //builder: (context, state) => const DetailPage(),
         pageBuilder: (context, state) {
+          final r_user.RandomUser user = state.extra as r_user.RandomUser;
           return CustomTransitionPage(
             key: state.pageKey,
-            child: const DetailPage(),
+            child: DetailPage(user: user),
             transitionsBuilder: (ctx, animation, animation2, child) {
               return FadeTransition(
                 opacity: CurveTween(

@@ -37,7 +37,8 @@ class HomePage extends StatelessWidget {
                   //     'Welcome to the home page ${user?.gender}',
                   //   ).animate().fade().scale();
                   // }),
-                  Constants.kVerticalSpaceLarge,
+
+                  Constants.kVerticalSpaceLarger,
                   UserCard(),
                 ],
               ),

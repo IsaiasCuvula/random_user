@@ -9,5 +9,6 @@ class Constants {
   static const double kIconSizeSmall = 40;
 
   //Space
-  static const kVerticalSpaceLarge = SizedBox(height: 100);
+  static const kVerticalSpaceLarger = SizedBox(height: 100.0);
+  static const kVerticalSpaceSmaller = SizedBox(height: 10.0);
 }

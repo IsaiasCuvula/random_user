@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_user/presentation/presentation.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -6,14 +7,17 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: true,
-        title: const Text('User Detail'),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: const Center(
-        child: Text('Detail Page'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          DetailPageHeader(),
+          Expanded(
+            child: Padding(
+              padding: Constants.kMarginLarge,
+              child: DetailPageBody(),
+            ),
+          ),
+        ],
       ),
     );
   }

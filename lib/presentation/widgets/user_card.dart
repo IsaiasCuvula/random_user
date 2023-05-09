@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:random_user/config/router/router.dart';
+import 'package:random_user/config/config.dart';
+import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
 class UserCard extends StatelessWidget {
   const UserCard({
     Key? key,
-    //required this.user,
+    required this.user,
   }) : super(key: key);
-  //final User user;
+  final RandomUser user;
 
   @override
   Widget build(BuildContext context) {
@@ -33,17 +34,23 @@ class UserCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 2,
                 child: CircleAvatar(
                   maxRadius: 50,
                   backgroundColor: Colors.green,
+                  onBackgroundImageError: (exception, stackTrace) {
+                    return;
+                  },
+                  backgroundImage: NetworkImage(
+                    '${user.picture?.medium}',
+                  ),
                 ),
               ),
               Expanded(
                 flex: 0,
                 child: Text(
-                  'Isaias Cuvula',
+                  '${user.name?.title} ${user.name?.first} ${user.name?.last}',
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ),
@@ -55,7 +62,10 @@ class UserCard extends StatelessWidget {
                       child: UserIconAction(
                         displayIcon: Icons.person_pin,
                         onPressed: () {
-                          context.pushNamed(RoutesName.userDetail);
+                          context.pushNamed(
+                            RoutesName.userDetail,
+                            extra: user,
+                          );
                           //to be definid what to do, maybe share te user info
                         },
                       ),

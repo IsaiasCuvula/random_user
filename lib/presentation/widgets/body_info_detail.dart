@@ -42,9 +42,13 @@ class BodyInfo extends StatelessWidget {
             ),
             if (displayButtonText != null)
               InkWell(
+                borderRadius: Constants.kBorderSmall,
                 onTap: onTap,
                 child: Text(
                   displayButtonText.toString(),
+                  style: textTheme.headlineSmall?.copyWith(
+                    color: Colors.blue,
+                  ),
                 ),
               )
           ],

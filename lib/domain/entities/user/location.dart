@@ -6,12 +6,14 @@ class Location {
   final String? state;
   final String? country;
   final int? postcode;
+  final Coordinates? coordinates;
 
   const Location({
     this.city,
     this.state,
     this.country,
     this.postcode,
+    this.coordinates,
   });
 
   factory Location.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class Location {
       state: json['state'],
       country: json['country'],
       postcode: json['postcode'],
+      //coordinates: Coordinates.fromJson(json['coordinates']),
     );
   }
 }

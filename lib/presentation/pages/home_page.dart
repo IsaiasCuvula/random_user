@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_user/presentation/presentation.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,17 +30,17 @@ class HomePage extends StatelessWidget {
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
-                children: const [
-                  // Consumer(builder: (ctx, ref, child) {
-                  //   final randomUserState = ref.watch(randomUserProvider);
-                  //   final user = randomUserState.user;
-                  //   return Text(
-                  //     'Welcome to the home page ${user?.gender}',
-                  //   ).animate().fade().scale();
-                  // }),
-
+                children: [
                   Constants.kVerticalSpaceLarger,
-                  UserCard(),
+                  Consumer(builder: (ctx, ref, child) {
+                    final randomUserState = ref.watch(randomUserProvider);
+                    final user = randomUserState.user;
+                    return user == null
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : UserCard(user: user);
+                  }),
                 ],
               ),
             ),

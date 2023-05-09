@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
 class DetailPageBody extends StatelessWidget {
-  const DetailPageBody({super.key});
+  const DetailPageBody({super.key, required this.user});
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +14,19 @@ class DetailPageBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Isaias Cuvula',
-            style: textTheme.headlineLarge,
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Text(
+              '${user.name?.title} ${user.name?.first} ${user.name?.last}',
+              style: textTheme.headlineLarge,
+            ),
           ),
           Constants.kVerticalSpaceMedium,
           BodyInfo(
             displayIcon: Icons.location_on_outlined,
-            displayTitle: 'Spain, Barcelona',
-            displayLabel: 'Barcelona, 9002',
+            displayTitle: '${user.location?.country} , ${user.location?.city}',
+            displayLabel:
+                '${user.location?.state} , ${user.location?.postcode}',
             displayButtonText: 'View on maps',
             onTap: () {},
           ),
@@ -28,7 +34,7 @@ class DetailPageBody extends StatelessWidget {
           BodyInfo(
             displayIcon: Icons.email_outlined,
             displayTitle: 'Email',
-            displayLabel: 'isaiascuvula@hotmail.com',
+            displayLabel: '${user.email}',
             displayButtonText: 'send an email',
             onTap: () {},
           ),
@@ -36,15 +42,15 @@ class DetailPageBody extends StatelessWidget {
           BodyInfo(
             displayIcon: Icons.call_rounded,
             displayTitle: 'Phone number',
-            displayLabel: '+351 98456318',
+            displayLabel: '${user.phone}',
             displayButtonText: 'call',
             onTap: () {},
           ),
           Constants.kVerticalSpaceSmall,
-          const BodyInfo(
+          BodyInfo(
             displayIcon: Icons.location_city_outlined,
             displayTitle: 'Nationality',
-            displayLabel: 'Angola',
+            displayLabel: '${user.nat} - ${user.location?.country}',
           ),
           Constants.kVerticalSpaceLarger,
         ],

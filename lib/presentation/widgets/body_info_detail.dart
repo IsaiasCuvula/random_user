@@ -34,7 +34,7 @@ class BodyInfo extends StatelessWidget {
           children: [
             Text(
               displayTitle,
-              style: textTheme.headlineLarge,
+              style: textTheme.headlineMedium,
             ),
             Text(
               displayLabel,
@@ -50,7 +50,7 @@ class BodyInfo extends StatelessWidget {
                     color: Colors.blue,
                   ),
                 ),
-              )
+              ),
           ],
         ),
       ],

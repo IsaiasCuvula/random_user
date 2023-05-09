@@ -22,35 +22,48 @@ class DetailPageBody extends StatelessWidget {
             ),
           ),
           Constants.kVerticalSpaceMedium,
-          BodyInfo(
-            displayIcon: Icons.location_on_outlined,
-            displayTitle: '${user.location?.country} , ${user.location?.city}',
-            displayLabel:
-                '${user.location?.state} , ${user.location?.postcode}',
-            displayButtonText: 'View on maps',
-            onTap: () {},
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: BodyInfo(
+              displayIcon: Icons.location_on_outlined,
+              displayTitle:
+                  '${user.location?.country} , ${user.location?.city}',
+              displayLabel:
+                  '${user.location?.state} , ${user.location?.postcode}',
+              displayButtonText: 'View on maps',
+              onTap: () {},
+            ),
           ),
           Constants.kVerticalSpaceSmall,
-          BodyInfo(
-            displayIcon: Icons.email_outlined,
-            displayTitle: 'Email',
-            displayLabel: '${user.email}',
-            displayButtonText: 'send an email',
-            onTap: () {},
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: BodyInfo(
+              displayIcon: Icons.email_outlined,
+              displayTitle: 'Email',
+              displayLabel: '${user.email}',
+              displayButtonText: 'send an email',
+              onTap: () {},
+            ),
           ),
           Constants.kVerticalSpaceSmall,
-          BodyInfo(
-            displayIcon: Icons.call_rounded,
-            displayTitle: 'Phone number',
-            displayLabel: '${user.phone}',
-            displayButtonText: 'call',
-            onTap: () {},
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: BodyInfo(
+              displayIcon: Icons.call_rounded,
+              displayTitle: 'Phone number',
+              displayLabel: '${user.phone}',
+              displayButtonText: 'call',
+              onTap: () {},
+            ),
           ),
           Constants.kVerticalSpaceSmall,
-          BodyInfo(
-            displayIcon: Icons.location_city_outlined,
-            displayTitle: 'Nationality',
-            displayLabel: '${user.nat} - ${user.location?.country}',
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: BodyInfo(
+              displayIcon: Icons.location_city_outlined,
+              displayTitle: 'Nationality',
+              displayLabel: '${user.nat} - ${user.location?.country}',
+            ),
           ),
           Constants.kVerticalSpaceLarger,
         ],

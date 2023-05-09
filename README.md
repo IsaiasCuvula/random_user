@@ -20,5 +20,3 @@ git clone https://github.com/IsaiasCuvula/random_user
 flutter pub get
 flutter run
 ```
-
-<img src="https://user-images.githubusercontent.com/68303716/233746169-053f5908-3382-4290-8cf9-ee825a5561bb.png"/>

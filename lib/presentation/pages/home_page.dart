@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_user/presentation/presentation.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final randomUserState = ref.watch(randomUserProvider);
+    final user = randomUserState.user;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
@@ -15,7 +18,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              //refresh to fetch another user
+              ref.read(randomUserProvider.notifier).getRandomUser();
             },
             icon: const Icon(
               Icons.refresh,
@@ -27,22 +30,15 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  Constants.kVerticalSpaceLarger,
-                  Consumer(builder: (ctx, ref, child) {
-                    final randomUserState = ref.watch(randomUserProvider);
-                    final user = randomUserState.user;
-                    return user == null
-                        ? const Center(
-                            child: CircularProgressIndicator(),
-                          )
-                        : UserCard(user: user);
-                  }),
-                ],
-              ),
+            child: Column(
+              children: [
+                Constants.kVerticalSpaceLarger,
+                user == null
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : UserCard(user: user)
+              ],
             ),
           ),
         ],

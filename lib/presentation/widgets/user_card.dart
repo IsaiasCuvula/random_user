@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:random_user/config/config.dart';
 import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
-class UserCard extends StatelessWidget {
+class UserCard extends ConsumerWidget {
   const UserCard({
     Key? key,
     required this.user,
@@ -12,8 +13,10 @@ class UserCard extends StatelessWidget {
   final RandomUser user;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final deviceSize = MediaQuery.of(context).size;
+    final displayInfo = ref.watch(displayInfoProvider);
+
     return Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: [
@@ -38,7 +41,7 @@ class UserCard extends StatelessWidget {
                 flex: 2,
                 child: CircleAvatar(
                   maxRadius: 50,
-                  backgroundColor: Colors.green,
+                  backgroundColor: Colors.white,
                   onBackgroundImageError: (exception, stackTrace) {
                     return;
                   },
@@ -50,8 +53,8 @@ class UserCard extends StatelessWidget {
               Expanded(
                 flex: 0,
                 child: Text(
-                  '${user.name?.title} ${user.name?.first} ${user.name?.last}',
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  displayInfo,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
               Expanded(
@@ -60,13 +63,12 @@ class UserCard extends StatelessWidget {
                   children: [
                     Expanded(
                       child: UserIconAction(
-                        displayIcon: Icons.person_pin,
+                        displayIcon: Icons.info_outline_rounded,
                         onPressed: () {
                           context.pushNamed(
                             RoutesName.userDetail,
                             extra: user,
                           );
-                          //to be definid what to do, maybe share te user info
                         },
                       ),
                     ),
@@ -74,31 +76,43 @@ class UserCard extends StatelessWidget {
                       child: UserIconAction(
                         displayIcon: Icons.email_outlined,
                         onPressed: () {
-                          //email the user
+                          ref
+                              .read(displayInfoProvider.notifier)
+                              .updateInfo(user.email);
                         },
                       ),
                     ),
                     Expanded(
                       child: UserIconAction(
-                        displayIcon: Icons.today_rounded,
+                        displayIcon: Icons.person_outline,
                         onPressed: () {
-                          //open the calendar and book something
+                          final username =
+                              '${user.name?.title} ${user.name?.first} ${user.name?.last}';
+                          ref
+                              .read(displayInfoProvider.notifier)
+                              .updateInfo(username);
                         },
                       ),
                     ),
                     Expanded(
                       child: UserIconAction(
-                        displayIcon: Icons.map_outlined,
+                        displayIcon: Icons.location_on_outlined,
                         onPressed: () {
-                          //make call
+                          final address =
+                              '${user.location?.country}, ${user.location?.city}';
+                          ref
+                              .read(displayInfoProvider.notifier)
+                              .updateInfo(address);
                         },
                       ),
                     ),
                     Expanded(
                       child: UserIconAction(
-                        displayIcon: Icons.call_rounded,
+                        displayIcon: Icons.call_outlined,
                         onPressed: () {
-                          //make call
+                          ref
+                              .read(displayInfoProvider.notifier)
+                              .updateInfo(user.phone);
                         },
                       ),
                     ),
@@ -107,7 +121,7 @@ class UserCard extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        )
       ],
     );
   }

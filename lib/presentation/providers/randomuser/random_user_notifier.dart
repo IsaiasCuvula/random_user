@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_user/domain/domain.dart';
-import 'package:random_user/presentation/providers/random_user_state.dart';
+
+import 'random_user_state.dart';
 
 class RandomUserNotifier extends StateNotifier<RandomUserState> {
   RandomUserNotifier(this._randomUserRepository)

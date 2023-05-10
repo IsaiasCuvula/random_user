@@ -30,8 +30,8 @@ jobs:
         - name: Install dependencies
           run: flutter pub get
 
-       # - name: Flutter analyze
-        #  run: flutter analyze
+        - name: Flutter analyze
+          run: flutter analyze
 
         #- run: flutter test
         - name: Build Android App

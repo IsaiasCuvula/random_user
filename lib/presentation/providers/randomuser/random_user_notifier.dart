@@ -5,17 +5,11 @@ import 'random_user_state.dart';
 
 class RandomUserNotifier extends StateNotifier<RandomUserState> {
   RandomUserNotifier(this._randomUserRepository)
-      : super(const RandomUserState([], null));
+      : super(const RandomUserState([], null)) {
+    getRandomUser();
+  }
 
   final RandomUserRepository _randomUserRepository;
-
-  @override
-  RandomUserState get state {
-    if (super.state.user == null) {
-      getRandomUser();
-    }
-    return super.state;
-  }
 
   Future<void> getRandomUser() async {
     final randomUser = await _randomUserRepository.getRandomUser();

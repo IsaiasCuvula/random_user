@@ -60,7 +60,10 @@ class DetailPageBody extends ConsumerWidget {
               displayTitle: 'Phone number',
               displayLabel: '${user.phone}',
               displayButtonText: 'call',
-              onTap: () {},
+              onTap: () async {
+                final phoneNumber = '${user.phone}';
+                await ref.read(makeCallProvider).makeCall(phoneNumber);
+              },
             ),
           ),
           Constants.kVerticalSpaceSmall,

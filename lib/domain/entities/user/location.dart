@@ -22,7 +22,7 @@ class Location {
       state: json['state'],
       country: json['country'],
       postcode: json['postcode'],
-      //coordinates: Coordinates.fromJson(json['coordinates']),
+      coordinates: Coordinates.fromJson(json['coordinates']),
     );
   }
 }

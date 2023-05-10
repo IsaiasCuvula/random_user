@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
-class DetailPageBody extends StatelessWidget {
+class DetailPageBody extends ConsumerWidget {
   const DetailPageBody({super.key, required this.user});
   final User user;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
@@ -31,7 +32,9 @@ class DetailPageBody extends StatelessWidget {
               displayLabel:
                   '${user.location?.state} , ${user.location?.postcode}',
               displayButtonText: 'View on maps',
-              onTap: () {},
+              onTap: () {
+                //print(user.location?.coordinates?.latitude);
+              },
             ),
           ),
           Constants.kVerticalSpaceSmall,
@@ -42,7 +45,11 @@ class DetailPageBody extends StatelessWidget {
               displayTitle: 'Email',
               displayLabel: '${user.email}',
               displayButtonText: 'send an email',
-              onTap: () {},
+              onTap: () async {
+                await ref.read(sendEmailProvider.notifier).sendEmail(
+                      Email.fromUser(user),
+                    );
+              },
             ),
           ),
           Constants.kVerticalSpaceSmall,

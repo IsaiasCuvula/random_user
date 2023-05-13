@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:random_user/config/config.dart';
 import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
@@ -33,7 +35,7 @@ class DetailPageBody extends ConsumerWidget {
                   '${user.location?.state} , ${user.location?.postcode}',
               displayButtonText: 'View on maps',
               onTap: () {
-                //print(user.location?.coordinates?.latitude);
+                context.pushNamed(RoutesName.mapPage);
               },
             ),
           ),

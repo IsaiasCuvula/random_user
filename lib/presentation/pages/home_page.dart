@@ -37,7 +37,8 @@ class HomePage extends ConsumerWidget {
                     ? const Center(
                         child: CircularProgressIndicator(),
                       )
-                    : UserCard(user: user)
+                    : UserCard(user: user),
+                Constants.kVerticalSpaceLarger,
               ],
             ),
           ),

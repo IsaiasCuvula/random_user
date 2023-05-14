@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
-import 'package:random_user/config/config.dart';
 import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
@@ -17,6 +15,7 @@ class DetailPageBody extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Constants.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: Text(
@@ -25,21 +24,6 @@ class DetailPageBody extends ConsumerWidget {
             ),
           ),
           Constants.kVerticalSpaceMedium,
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: BodyInfo(
-              displayIcon: Icons.location_on_outlined,
-              displayTitle:
-                  '${user.location?.country} , ${user.location?.city}',
-              displayLabel:
-                  '${user.location?.state} , ${user.location?.postcode}',
-              displayButtonText: 'View on maps',
-              onTap: () {
-                context.pushNamed(RoutesName.mapPage);
-              },
-            ),
-          ),
-          Constants.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: BodyInfo(
@@ -75,6 +59,17 @@ class DetailPageBody extends ConsumerWidget {
               displayIcon: Icons.location_city_outlined,
               displayTitle: 'Nationality',
               displayLabel: '${user.nat} - ${user.location?.country}',
+            ),
+          ),
+          Constants.kVerticalSpaceSmall,
+          FittedBox(
+            fit: BoxFit.fitWidth,
+            child: BodyInfo(
+              displayIcon: Icons.location_on_outlined,
+              displayTitle:
+                  '${user.location?.country} , ${user.location?.city}',
+              displayLabel:
+                  '${user.location?.state} , ${user.location?.postcode}',
             ),
           ),
           Constants.kVerticalSpaceLarger,

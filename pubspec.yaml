@@ -19,6 +19,7 @@ dependencies:
   go_router: ^7.0.0
   google_maps_flutter: ^2.2.6
   http: ^0.13.5
+  permission_handler: ^10.2.0
   url_launcher: ^6.1.11
  
 

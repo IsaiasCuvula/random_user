@@ -38,6 +38,17 @@ class HomePage extends ConsumerWidget {
                         child: CircularProgressIndicator(),
                       )
                     : UserCard(user: user),
+                TextButton(
+                  onPressed: () async {
+                    await showDialog(
+                      context: context,
+                      builder: (ctx) {
+                        return Helpers.dialod(context, ref);
+                      },
+                    );
+                  },
+                  child: const Text('See more users'),
+                ),
                 Constants.kVerticalSpaceLarger,
               ],
             ),

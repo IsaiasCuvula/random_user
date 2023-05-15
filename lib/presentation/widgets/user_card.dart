@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:random_user/config/config.dart';
@@ -40,15 +39,9 @@ class UserCard extends ConsumerWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: CircleAvatar(
-                  maxRadius: 50,
-                  backgroundColor: Colors.white,
-                  onBackgroundImageError: (exception, stackTrace) {
-                    return;
-                  },
-                  backgroundImage: NetworkImage(
-                    '${user.picture?.medium}',
-                  ),
+                child: DisplayUserImage(
+                  radius: 50.0,
+                  imageUrl: '${user.picture?.medium}',
                 ),
               ),
               Expanded(
@@ -56,7 +49,7 @@ class UserCard extends ConsumerWidget {
                 child: Text(
                   displayInfo,
                   style: Theme.of(context).textTheme.bodyMedium,
-                ).animate().scale().fadeIn(),
+                ),
               ),
               Expanded(
                 child: Row(

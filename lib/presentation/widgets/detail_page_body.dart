@@ -5,7 +5,7 @@ import 'package:random_user/presentation/presentation.dart';
 
 class DetailPageBody extends ConsumerWidget {
   const DetailPageBody({super.key, required this.user});
-  final User user;
+  final RandomUser user;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,8 +18,8 @@ class DetailPageBody extends ConsumerWidget {
           Constants.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
-            child: Text(
-              '${user.name?.title} ${user.name?.first} ${user.name?.last}',
+            child: DisplayUserName(
+              user: user,
               style: textTheme.headlineLarge,
             ),
           ),

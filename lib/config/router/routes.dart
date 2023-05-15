@@ -31,6 +31,25 @@ final routes = [
           );
         },
       ),
+      GoRoute(
+        path: 'list-user',
+        name: RoutesName.listUsers,
+        parentNavigatorKey: RoutesConfig.navigationKey,
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: const ListUsersPage(),
+            transitionsBuilder: (ctx, animation, animation2, child) {
+              return FadeTransition(
+                opacity: CurveTween(
+                  curve: Curves.easeInOutCirc,
+                ).animate(animation),
+                child: child,
+              );
+            },
+          );
+        },
+      ),
     ],
   ),
 ];

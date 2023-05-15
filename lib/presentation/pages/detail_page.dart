@@ -16,7 +16,7 @@ class DetailPage extends StatelessWidget {
           DetailPageHeader(user: user),
           Expanded(
             child: Padding(
-              padding: Constants.kMarginLarge,
+              padding: Constants.kPaddingLarge,
               child: DetailPageBody(user: user),
             ),
           ),

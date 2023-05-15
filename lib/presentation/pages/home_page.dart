@@ -9,7 +9,6 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final randomUserState = ref.watch(randomUserProvider);
     final user = randomUserState.user;
-
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
@@ -17,8 +16,8 @@ class HomePage extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
-            onPressed: () {
-              ref.read(randomUserProvider.notifier).getRandomUser();
+            onPressed: () async {
+              await ref.read(randomUserProvider.notifier).getRandomUser();
             },
             icon: const Icon(
               Icons.refresh,

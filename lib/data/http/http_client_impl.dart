@@ -9,10 +9,14 @@ class UserHttpClientImpl implements UserHttpClient {
   UserHttpClientImpl({required this.client});
 
   @override
-  Future<RandomUserModel> request(
-      {required String url, Map? body, Map? header}) async {
+  Future<dynamic> request({
+    required String url,
+    Map<String, dynamic>? body,
+    Map<String, String>? headers,
+    bool isListRequest = false,
+  }) async {
     final Map<String, String> defaultHeaders =
-        header?.cast<String, String>() ?? {}
+        headers?.cast<String, String>() ?? {}
           ..addAll({
             'content-type': 'application/json',
             'accept': 'application/json',
@@ -21,14 +25,24 @@ class UserHttpClientImpl implements UserHttpClient {
       Uri.parse(url),
       headers: defaultHeaders,
     );
-    return _handleRespose(response);
+    return _handleRespose(response, isListRequest: isListRequest);
   }
 
-  Future<RandomUserModel> _handleRespose(http.Response response) async {
+  Future<dynamic> _handleRespose(http.Response response,
+      {bool isListRequest = false}) async {
     if (response.statusCode >= 200 && response.statusCode < 300) {
-      final jsonData = json.decode(response.body);
-      return UserMapper.fromJson(jsonData);
+      final jsonData = jsonDecode(response.body);
+      try {
+        if (isListRequest) {
+          return UserMapper.fromJsonList(jsonData);
+        } else {
+          return UserMapper.fromJson(jsonData);
+        }
+      } catch (e) {
+        throw 'Error parsing JSON data: $e';
+      }
     } else {
+      //'Server responded with error code: ${response.statusCode}'
       throw ServerException();
     }
   }

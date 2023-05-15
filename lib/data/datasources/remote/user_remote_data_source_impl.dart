@@ -9,7 +9,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   @override
   Future<ListUsersModel> getListOfRandomUsers(int number) async {
     final url = '${Constants.apiUrl}/?results=$number';
-    return await httpClient.request(url: url);
+    return await httpClient.request(url: url, isListRequest: true);
   }
 
   @override

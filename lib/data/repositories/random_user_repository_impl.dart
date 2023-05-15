@@ -10,9 +10,9 @@ class RandomUserRepositoryImpl extends RandomUserRepository {
   @override
   Future<ListUsers> getListOfRandomUsers(int number) async {
     try {
-      //final listUser = await remoteDataSource.getListOfRandomUsers(number);
-      //return UserMapper.listUserMapper(listUser);
-      return [];
+      final listUser = await remoteDataSource.getListOfRandomUsers(number);
+      final listRandomUser = listUser.map((user) => UserMapper.toEntity(user));
+      return listRandomUser.toList();
     } on ServerException {
       throw ServerException();
     }

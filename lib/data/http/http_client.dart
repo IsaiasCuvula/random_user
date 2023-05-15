@@ -1,7 +1,8 @@
 abstract class UserHttpClient {
   Future<dynamic> request({
     required String url,
-    Map? body,
-    Map<String, String>? header,
+    Map<String, dynamic>? body,
+    Map<String, String>? headers,
+    bool isListRequest = false,
   });
 }

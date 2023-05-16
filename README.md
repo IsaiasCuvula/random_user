@@ -20,3 +20,9 @@ git clone https://github.com/IsaiasCuvula/random_user
 flutter pub get
 flutter run
 ```
+
+<p align="left">
+  <img width="200" alt="iPhone13Mockup1" src="https://github.com/IsaiasCuvula/Flutter-Developer-Portfolio/assets/68303716/2c6a31c3-7a24-415c-b90d-e38876ca3698" />
+  <img width="200" alt="iPhone13Mockup2" src="https://github.com/IsaiasCuvula/Flutter-Developer-Portfolio/assets/68303716/2e161085-f39a-4394-b500-a244cb7ffe13" />
+  <img width="200" alt="iPhone13Mockup3" src="https://github.com/IsaiasCuvula/Flutter-Developer-Portfolio/assets/68303716/d7288e56-0e73-4c67-bce1-a95bb9749802" />
+</p>

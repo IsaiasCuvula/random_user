@@ -23,7 +23,7 @@ class DetailPageBody extends ConsumerWidget {
               style: textTheme.headlineLarge,
             ),
           ),
-          Constants.kVerticalSpaceMedium,
+          Constants.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: BodyInfo(

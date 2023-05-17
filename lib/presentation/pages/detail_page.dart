@@ -9,15 +9,25 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          DetailPageHeader(user: user),
-          Expanded(
-            child: Padding(
-              padding: Constants.kPaddingLarge,
-              child: DetailPageBody(user: user),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            expandedHeight: deviceSize.height * 0.4,
+            flexibleSpace: FlexibleSpaceBar(
+              background: DetailPageHeader(user: user),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: Constants.kPaddingLarge,
+                  child: DetailPageBody(user: user),
+                ),
+              ],
             ),
           ),
         ],

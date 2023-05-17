@@ -14,22 +14,15 @@ class Helpers {
   }
 
   static AlertDialog dialod(BuildContext context, WidgetRef ref) {
+    final TextEditingController controller = TextEditingController();
     return AlertDialog(
       title: const Text('How many users do you want to see?'),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           TextField(
+            controller: controller,
             keyboardType: TextInputType.number,
-            onChanged: (value) async {
-              await ref
-                  .read(
-                    randomUserProvider.notifier,
-                  )
-                  .fetchListRandomUsers(
-                    stringToInt(value),
-                  );
-            },
           ),
         ],
       ),
@@ -39,16 +32,35 @@ class Helpers {
           child: const Text('Cancel'),
         ),
         TextButton(
-          onPressed: () => context
-              .pushNamed(
-            RoutesName.listUsers,
-          )
-              .then((value) {
-            context.pop();
-          }),
+          onPressed: () async {
+            if (stringToInt(controller.text) > 0) {
+              await ref
+                  .read(randomUserProvider.notifier)
+                  .fetchListRandomUsers(
+                    stringToInt(controller.text),
+                  )
+                  .then((value) {
+                context.pushNamed(RoutesName.listUsers).then((value) {
+                  context.pop();
+                  controller.dispose();
+                });
+              });
+            } else {
+              showSnackBar(context);
+            }
+          },
           child: const Text('See users'),
         ),
       ],
+    );
+  }
+
+  static void showSnackBar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Please insert a valid number or greater than zero!'),
+        backgroundColor: Colors.red,
+      ),
     );
   }
 }

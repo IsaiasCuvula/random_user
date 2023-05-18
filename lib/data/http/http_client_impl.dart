@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'package:random_user/core/error/exceptions.dart';
 import 'package:random_user/data/data.dart';
-import 'package:random_user/domain/domain.dart';
 import 'package:http/http.dart' as http;
 
 class UserHttpClientImpl implements UserHttpClient {
@@ -39,10 +39,9 @@ class UserHttpClientImpl implements UserHttpClient {
           return UserMapper.fromJson(jsonData);
         }
       } catch (e) {
-        throw 'Error parsing JSON data: $e';
+        throw ParsingJsonException();
       }
     } else {
-      //'Server responded with error code: ${response.statusCode}'
       throw ServerException();
     }
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_user/presentation/utils/utils.dart';
+import 'package:random_user/config/config.dart';
 
 class UserIconAction extends StatelessWidget {
   const UserIconAction({
@@ -18,7 +18,7 @@ class UserIconAction extends StatelessWidget {
       icon: Icon(
         displayIcon,
         color: Colors.green,
-        size: Constants.kIconSizeSmall,
+        size: Dimessions.kIconSizeSmall,
       ),
     );
   }

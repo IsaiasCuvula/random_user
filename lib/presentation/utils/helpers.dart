@@ -65,15 +65,12 @@ class Helpers {
     );
   }
 
-  static const String _SERVER_FAILURE_MESSAGE = 'Server Failure';
-  static const String _CACHE_FAILURE_MESSAGE = 'Cache Failure';
-
   static String failureToMessage(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
-        return _SERVER_FAILURE_MESSAGE;
+        return Constants.kServerFailureMessage;
       case CacheFailure:
-        return _CACHE_FAILURE_MESSAGE;
+        return Constants.kCacheFailureMessage;
       default:
         return 'Unexpected error';
     }

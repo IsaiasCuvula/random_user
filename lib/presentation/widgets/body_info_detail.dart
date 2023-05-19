@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_user/presentation/presentation.dart';
+import 'package:random_user/config/config.dart';
 
 class BodyInfo extends StatelessWidget {
   const BodyInfo({
@@ -27,7 +27,7 @@ class BodyInfo extends StatelessWidget {
         Icon(
           displayIcon,
         ),
-        Constants.kHorizontalSpaceSmall,
+        Spacing.kHorizontalSpaceSmall,
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -42,7 +42,7 @@ class BodyInfo extends StatelessWidget {
             ),
             if (displayButtonText != null)
               InkWell(
-                borderRadius: Constants.kBorderSmall,
+                borderRadius: Dimessions.kBorderSmall,
                 onTap: onTap,
                 child: Text(
                   displayButtonText.toString(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:random_user/config/config.dart';
 import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
@@ -24,7 +25,7 @@ class DetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: Constants.kPaddingLarge,
+                  padding: Dimessions.kPaddingLarge,
                   child: DetailPageBody(user: user),
                 ),
               ],

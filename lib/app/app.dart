@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_user/config/router/routes_config.dart';
-import 'package:random_user/config/theme.dart';
+import 'package:random_user/config/config.dart';
 
 class RandomUser extends StatelessWidget {
   const RandomUser({super.key});

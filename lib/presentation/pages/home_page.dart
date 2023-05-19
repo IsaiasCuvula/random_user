@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:random_user/config/config.dart';
 import 'package:random_user/presentation/presentation.dart';
 
 class HomePage extends ConsumerWidget {
@@ -34,7 +35,7 @@ class HomePage extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Constants.kVerticalSpaceLarger,
+                Spacing.kVerticalSpaceLarger,
                 if (isLoading)
                   const Center(
                     child: CircularProgressIndicator(),
@@ -52,7 +53,7 @@ class HomePage extends ConsumerWidget {
                   },
                   child: const Text('See more users'),
                 ),
-                Constants.kVerticalSpaceLarger,
+                Spacing.kVerticalSpaceLarger,
               ],
             ),
           ),

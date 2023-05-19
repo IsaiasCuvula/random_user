@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:random_user/config/config.dart';
 import 'package:random_user/domain/domain.dart';
 import 'package:random_user/presentation/presentation.dart';
 
@@ -15,7 +16,7 @@ class DetailPageBody extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Constants.kVerticalSpaceSmall,
+          Spacing.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: DisplayUserName(
@@ -23,7 +24,7 @@ class DetailPageBody extends ConsumerWidget {
               style: textTheme.headlineLarge,
             ),
           ),
-          Constants.kVerticalSpaceSmall,
+          Spacing.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: BodyInfo(
@@ -38,7 +39,7 @@ class DetailPageBody extends ConsumerWidget {
               },
             ),
           ),
-          Constants.kVerticalSpaceSmall,
+          Spacing.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: BodyInfo(
@@ -52,7 +53,7 @@ class DetailPageBody extends ConsumerWidget {
               },
             ),
           ),
-          Constants.kVerticalSpaceSmall,
+          Spacing.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: BodyInfo(
@@ -61,7 +62,7 @@ class DetailPageBody extends ConsumerWidget {
               displayLabel: '${user.nat} - ${user.location?.country}',
             ),
           ),
-          Constants.kVerticalSpaceSmall,
+          Spacing.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: BodyInfo(
@@ -72,7 +73,7 @@ class DetailPageBody extends ConsumerWidget {
                   '${user.location?.state} , ${user.location?.postcode}',
             ),
           ),
-          Constants.kVerticalSpaceLarger,
+          Spacing.kVerticalSpaceLarger,
         ],
       ),
     );

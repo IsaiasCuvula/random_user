@@ -11,15 +11,12 @@ class DisplayMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    return SizedBox(
-      height: MediaQuery.of(context).size.height / 3,
-      child: Center(
-        child: SingleChildScrollView(
-          child: Text(
-            message,
-            style: textTheme.bodyMedium,
-            textAlign: TextAlign.center,
-          ),
+    return Center(
+      child: SingleChildScrollView(
+        child: Text(
+          message,
+          style: textTheme.bodySmall?.copyWith(color: Colors.red),
+          textAlign: TextAlign.center,
         ),
       ),
     );

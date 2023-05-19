@@ -71,6 +71,12 @@ class Helpers {
         return Constants.kServerFailureMessage;
       case CacheFailure:
         return Constants.kCacheFailureMessage;
+      case ParsingJsonFailure:
+        return Constants.kParsingJsonFailureMessage;
+      case SendingEmailFailure:
+        return Constants.kSendingEmailMessage;
+      case MakingCallFailure:
+        return Constants.kMakingCallMessage;
       default:
         return 'Unexpected error';
     }

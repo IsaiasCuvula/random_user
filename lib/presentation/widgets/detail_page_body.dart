@@ -11,6 +11,10 @@ class DetailPageBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
+    final sendEmailState = ref.watch(sendEmailProvider);
+    final makeCallState = ref.watch(makeCallProvider);
+    final sendEmailErrorMessage = sendEmailState.erroMessage;
+    final makeCallErrorMessage = makeCallState.erroMessage;
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
@@ -40,6 +44,11 @@ class DetailPageBody extends ConsumerWidget {
             ),
           ),
           Spacing.kVerticalSpaceSmall,
+          if (sendEmailErrorMessage != null)
+            DisplayMessage(
+              message: sendEmailErrorMessage,
+            ),
+          Spacing.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,
             child: BodyInfo(
@@ -49,10 +58,15 @@ class DetailPageBody extends ConsumerWidget {
               displayButtonText: 'call',
               onTap: () async {
                 final phoneNumber = '${user.phone}';
-                await ref.read(makeCallProvider).makeCall(phoneNumber);
+                await ref.read(makeCallProvider.notifier).makeCall(phoneNumber);
               },
             ),
           ),
+          Spacing.kVerticalSpaceSmall,
+          if (makeCallErrorMessage != null)
+            DisplayMessage(
+              message: makeCallErrorMessage,
+            ),
           Spacing.kVerticalSpaceSmall,
           FittedBox(
             fit: BoxFit.fitWidth,

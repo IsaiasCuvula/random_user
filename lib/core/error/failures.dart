@@ -1,5 +1,5 @@
-abstract class Failures {}
+abstract class Failure {}
 
-class ServerFailures extends Failures {}
+class ServerFailure extends Failure {}
 
-class CacheFailures extends Failures {}
+class CacheFailure extends Failure {}

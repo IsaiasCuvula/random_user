@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:random_user/config/router/router.dart';
+import 'package:random_user/core/core.dart';
 import 'package:random_user/presentation/presentation.dart';
 
 class Helpers {
@@ -35,7 +36,7 @@ class Helpers {
           onPressed: () async {
             if (stringToInt(controller.text) > 0) {
               await ref
-                  .read(randomUserProvider.notifier)
+                  .read(listRandomUserProvider.notifier)
                   .fetchListRandomUsers(
                     stringToInt(controller.text),
                   )
@@ -62,5 +63,19 @@ class Helpers {
         backgroundColor: Colors.red,
       ),
     );
+  }
+
+  static const String _SERVER_FAILURE_MESSAGE = 'Server Failure';
+  static const String _CACHE_FAILURE_MESSAGE = 'Cache Failure';
+
+  static String failureToMessage(Failure failure) {
+    switch (failure.runtimeType) {
+      case ServerFailure:
+        return _SERVER_FAILURE_MESSAGE;
+      case CacheFailure:
+        return _CACHE_FAILURE_MESSAGE;
+      default:
+        return 'Unexpected error';
+    }
   }
 }

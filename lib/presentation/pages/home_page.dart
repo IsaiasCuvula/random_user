@@ -7,8 +7,10 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final randomUserState = ref.watch(randomUserProvider);
+    final randomUserState = ref.watch(singleRandomUserProvider);
     final user = randomUserState.user;
+    final isLoading = randomUserState.isLoading;
+    final errorMessage = randomUserState.erroMessage;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
@@ -17,7 +19,7 @@ class HomePage extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () async {
-              await ref.read(randomUserProvider.notifier).getRandomUser();
+              await ref.read(singleRandomUserProvider.notifier).getRandomUser();
             },
             icon: const Icon(
               Icons.refresh,
@@ -30,13 +32,15 @@ class HomePage extends ConsumerWidget {
         children: [
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Constants.kVerticalSpaceLarger,
-                user == null
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : UserCard(user: user),
+                if (isLoading)
+                  const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                if (user != null) UserCard(user: user),
+                if (errorMessage != null) DisplayMessage(message: errorMessage),
                 TextButton(
                   onPressed: () async {
                     await showDialog(

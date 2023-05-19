@@ -10,38 +10,65 @@ class ListUsersPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final textTheme = Theme.of(context).textTheme;
-    final users = ref.read(randomUserProvider).users;
+    final listRandomUserState = ref.watch(listRandomUserProvider);
+    final users = listRandomUserState.users;
+    final isLoading = listRandomUserState.isLoading;
+    final errorMessage = listRandomUserState.erroMessage;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: const Text('List users'),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              await ref
+                  .read(listRandomUserProvider.notifier)
+                  .fetchListRandomUsers(users?.length ?? 1);
+            },
+            icon: const Icon(
+              Icons.refresh,
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: Constants.kPaddingLarge,
-        child: ListView.builder(
-          itemCount: users.length,
-          itemBuilder: (ctx, index) {
-            final user = users[index];
-            return Card(
-              child: ListTile(
-                leading: DisplayUserImage(
-                  imageUrl: '${user.picture?.thumbnail}',
-                  radius: 20.0,
-                ),
-                title: DisplayUserName(
-                  user: user,
-                  style: textTheme.headlineSmall,
-                ),
-                onTap: () {
-                  context.pushNamed(
-                    RoutesName.userDetail,
-                    extra: user,
-                  );
-                },
+        child: Column(
+          children: [
+            if (isLoading)
+              const Center(
+                child: CircularProgressIndicator(),
               ),
-            );
-          },
+            if (errorMessage != null) DisplayMessage(message: errorMessage),
+            if (users != null)
+              Expanded(
+                child: ListView.builder(
+                  itemCount: users.length,
+                  itemBuilder: (ctx, index) {
+                    final user = users[index];
+                    return Card(
+                      child: ListTile(
+                        leading: DisplayUserImage(
+                          imageUrl: '${user.picture?.thumbnail}',
+                          radius: 20.0,
+                        ),
+                        title: DisplayUserName(
+                          user: user,
+                          style: textTheme.headlineSmall,
+                        ),
+                        onTap: () {
+                          context.pushNamed(
+                            RoutesName.userDetail,
+                            extra: user,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+          ],
         ),
       ),
     );

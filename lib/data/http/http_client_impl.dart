@@ -21,11 +21,15 @@ class UserHttpClientImpl implements UserHttpClient {
             'content-type': 'application/json',
             'accept': 'application/json',
           });
-    final response = await http.get(
-      Uri.parse(url),
-      headers: defaultHeaders,
-    );
-    return _handleRespose(response, isListRequest: isListRequest);
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: defaultHeaders,
+      );
+      return _handleRespose(response, isListRequest: isListRequest);
+    } catch (e) {
+      throw ServerException();
+    }
   }
 
   Future<dynamic> _handleRespose(http.Response response,

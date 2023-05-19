@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:random_user/core/core.dart';
 import 'package:random_user/data/data.dart';
 import 'package:random_user/domain/domain.dart';
@@ -9,23 +10,23 @@ class RandomUserRepositoryImpl extends RandomUserRepository {
   RandomUserRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<ListUsers> getListOfRandomUsers(int number) async {
+  Future<Either<Failure, ListUsers>> getListOfRandomUsers(int number) async {
     try {
       final listUser = await remoteDataSource.getListOfRandomUsers(number);
       final listRandomUser = listUser.map((user) => UserMapper.toEntity(user));
-      return listRandomUser.toList();
+      return Right(listRandomUser.toList());
     } on ServerException {
-      throw ServerException();
+      return Left(ServerFailure());
     }
   }
 
   @override
-  Future<RandomUser> getRandomUser() async {
+  Future<Either<Failure, RandomUser>> getRandomUser() async {
     try {
       final userModel = await remoteDataSource.getRandomUser();
-      return UserMapper.toEntity(userModel);
+      return Right(UserMapper.toEntity(userModel));
     } on ServerException {
-      throw ServerException();
+      return Left(ServerFailure());
     }
   }
 }

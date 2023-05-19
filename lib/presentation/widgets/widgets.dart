@@ -5,3 +5,4 @@ export 'detail_page_body.dart';
 export 'body_info_detail.dart';
 export 'display_username.dart';
 export 'display_user_image.dart';
+export 'display_message.dart';

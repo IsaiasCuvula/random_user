@@ -3,7 +3,7 @@ import 'package:random_user/presentation/presentation.dart';
 
 final displayInfoProvider =
     StateNotifierProvider<DisplayInfoNotifier, String>((ref) {
-  final user = ref.watch(randomUserProvider).user;
+  final user = ref.watch(singleRandomUserProvider).user;
   final username =
       '${user?.name?.title} ${user?.name?.first} ${user?.name?.last}';
   return DisplayInfoNotifier(username);

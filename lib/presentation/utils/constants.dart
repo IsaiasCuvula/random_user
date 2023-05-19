@@ -1,6 +1,6 @@
 class Constants {
   //strings
-  static const String kServerFailureMessage = ' Oops! Something went wrong.';
+  static const String kServerFailureMessage = 'Oops! Something went wrong.';
   static const String kCacheFailureMessage =
       'Uh-oh! There was an issue with the cache';
   static const String kSendingEmailMessage =

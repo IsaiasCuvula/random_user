@@ -47,7 +47,8 @@ class Helpers {
                 });
               });
             } else {
-              showSnackBar(context);
+              const msg = 'Please insert a valid number or greater than zero!';
+              showSnackBar(context, msg);
             }
           },
           child: const Text('See users'),
@@ -56,10 +57,10 @@ class Helpers {
     );
   }
 
-  static void showSnackBar(BuildContext context) {
+  static void showSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Please insert a valid number or greater than zero!'),
+      SnackBar(
+        content: Text(message),
         backgroundColor: Colors.red,
       ),
     );

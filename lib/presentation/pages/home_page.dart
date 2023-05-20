@@ -28,36 +28,32 @@ class HomePage extends ConsumerWidget {
           )
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Spacing.kVerticalSpaceLarger,
-                if (isLoading)
-                  const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                if (user != null) UserCard(user: user),
-                if (errorMessage != null) DisplayMessage(message: errorMessage),
-                TextButton(
-                  onPressed: () async {
-                    await showDialog(
-                      context: context,
-                      builder: (ctx) {
-                        return Helpers.dialod(context, ref);
-                      },
-                    );
+      body: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Spacing.kVerticalSpaceLarger,
+            if (isLoading)
+              const Center(
+                child: CircularProgressIndicator(),
+              ),
+            if (user != null) UserCard(user: user),
+            if (errorMessage != null) DisplayMessage(message: errorMessage),
+            TextButton(
+              onPressed: () async {
+                await showDialog(
+                  context: context,
+                  builder: (ctx) {
+                    return Helpers.dialod(context, ref);
                   },
-                  child: const Text('See more users'),
-                ),
-                Spacing.kVerticalSpaceLarger,
-              ],
+                );
+              },
+              child: const Text('See more users'),
             ),
-          ),
-        ],
+            Spacing.kVerticalSpaceLarger,
+          ],
+        ),
       ),
     );
   }

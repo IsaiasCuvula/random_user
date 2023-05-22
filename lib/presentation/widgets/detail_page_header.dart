@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_user/domain/domain.dart';
+import 'package:random_user/presentation/presentation.dart';
 
 class DetailPageHeader extends StatelessWidget {
   const DetailPageHeader({super.key, required this.user});
@@ -15,15 +16,9 @@ class DetailPageHeader extends StatelessWidget {
       color: Colors.green.shade100,
       child: AspectRatio(
         aspectRatio: 9 / 16,
-        child: Image.network(
-          '${user.picture?.large}',
-          fit: BoxFit.cover,
-          loadingBuilder: (ctx, child, loadingProgress) {
-            if (loadingProgress == null) return child;
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          },
+        child: DisplayUserImage(
+          imageUrl: '${user.picture?.large}',
+          radius: 0,
         ),
       ),
     );

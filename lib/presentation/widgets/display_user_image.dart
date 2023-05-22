@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:random_user/config/config.dart';
 
 class DisplayUserImage extends StatelessWidget {
   const DisplayUserImage({
@@ -12,13 +14,31 @@ class DisplayUserImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      maxRadius: radius,
-      backgroundColor: Colors.white,
-      onBackgroundImageError: (exception, stackTrace) {
-        return;
-      },
-      backgroundImage: NetworkImage(imageUrl),
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      placeholder: (context, url) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+      errorWidget: (context, url, error) => const Center(
+        child: Icon(
+          Icons.error,
+          color: Colors.green,
+          size: Dimessions.kIconSizeSmall,
+        ),
+      ),
+      imageBuilder: (context, imageProvider) => radius == 0
+          ? Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: imageProvider,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            )
+          : CircleAvatar(
+              maxRadius: radius,
+              backgroundImage: imageProvider,
+            ),
     );
   }
 }

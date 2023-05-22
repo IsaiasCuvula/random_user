@@ -49,9 +49,12 @@ class ListUsersPage extends ConsumerWidget {
                     final user = users[index];
                     return Card(
                       child: ListTile(
-                        leading: DisplayUserImage(
-                          imageUrl: '${user.picture?.thumbnail}',
-                          radius: 20.0,
+                        leading: SizedBox(
+                          width: 40.0,
+                          child: DisplayUserImage(
+                            imageUrl: '${user.picture?.thumbnail}',
+                            radius: 20.0,
+                          ),
                         ),
                         title: DisplayUserName(
                           user: user,

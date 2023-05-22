@@ -2,10 +2,10 @@ import 'package:random_user/core/core.dart';
 import 'package:random_user/data/data.dart';
 import 'package:random_user/presentation/presentation.dart';
 
-class UserRemoteDataSourceImpl implements UserRemoteDataSource {
+class RandomUserRemoteDataSourceImpl implements RandomUserRemoteDataSource {
   final UserHttpClient httpClient;
 
-  UserRemoteDataSourceImpl({required this.httpClient});
+  RandomUserRemoteDataSourceImpl({required this.httpClient});
 
   @override
   Future<ListUsersModel> getListOfRandomUsers(int number) async {

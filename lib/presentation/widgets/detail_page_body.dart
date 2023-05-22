@@ -15,81 +15,77 @@ class DetailPageBody extends ConsumerWidget {
     final makeCallState = ref.watch(makeCallProvider);
     final sendEmailErrorMessage = sendEmailState.erroMessage;
     final makeCallErrorMessage = makeCallState.erroMessage;
-    return SingleChildScrollView(
-      physics: const AlwaysScrollableScrollPhysics(),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Spacing.kVerticalSpaceSmall,
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: DisplayUserName(
-              user: user,
-              style: textTheme.headlineLarge,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Spacing.kVerticalSpaceSmall,
+        FittedBox(
+          fit: BoxFit.fitWidth,
+          child: DisplayUserName(
+            user: user,
+            style: textTheme.headlineLarge,
           ),
-          Spacing.kVerticalSpaceSmall,
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: BodyInfo(
-              displayIcon: Icons.email_outlined,
-              displayTitle: 'Email',
-              displayLabel: '${user.email}',
-              displayButtonText: 'send an email',
-              onTap: () async {
-                await ref.read(sendEmailProvider.notifier).sendEmail(
-                      Email.fromUser(user),
-                    );
-              },
-            ),
+        ),
+        Spacing.kVerticalSpaceSmall,
+        FittedBox(
+          fit: BoxFit.fitWidth,
+          child: BodyInfo(
+            displayIcon: Icons.email_outlined,
+            displayTitle: 'Email',
+            displayLabel: '${user.email}',
+            displayButtonText: 'send an email',
+            onTap: () async {
+              await ref.read(sendEmailProvider.notifier).sendEmail(
+                    Email.fromUser(user),
+                  );
+            },
           ),
-          Spacing.kVerticalSpaceSmall,
-          if (sendEmailErrorMessage != null)
-            DisplayMessage(
-              message: sendEmailErrorMessage,
-            ),
-          Spacing.kVerticalSpaceSmall,
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: BodyInfo(
-              displayIcon: Icons.call_rounded,
-              displayTitle: 'Phone number',
-              displayLabel: '${user.phone}',
-              displayButtonText: 'call',
-              onTap: () async {
-                final phoneNumber = '${user.phone}';
-                await ref.read(makeCallProvider.notifier).makeCall(phoneNumber);
-              },
-            ),
+        ),
+        Spacing.kVerticalSpaceSmall,
+        if (sendEmailErrorMessage != null)
+          DisplayMessage(
+            message: sendEmailErrorMessage,
           ),
-          Spacing.kVerticalSpaceSmall,
-          if (makeCallErrorMessage != null)
-            DisplayMessage(
-              message: makeCallErrorMessage,
-            ),
-          Spacing.kVerticalSpaceSmall,
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: BodyInfo(
-              displayIcon: Icons.location_city_outlined,
-              displayTitle: 'Nationality',
-              displayLabel: '${user.nat} - ${user.location?.country}',
-            ),
+        Spacing.kVerticalSpaceSmall,
+        FittedBox(
+          fit: BoxFit.fitWidth,
+          child: BodyInfo(
+            displayIcon: Icons.call_rounded,
+            displayTitle: 'Phone number',
+            displayLabel: '${user.phone}',
+            displayButtonText: 'call',
+            onTap: () async {
+              final phoneNumber = '${user.phone}';
+              await ref.read(makeCallProvider.notifier).makeCall(phoneNumber);
+            },
           ),
-          Spacing.kVerticalSpaceSmall,
-          FittedBox(
-            fit: BoxFit.fitWidth,
-            child: BodyInfo(
-              displayIcon: Icons.location_on_outlined,
-              displayTitle:
-                  '${user.location?.country} , ${user.location?.city}',
-              displayLabel:
-                  '${user.location?.state} , ${user.location?.postcode}',
-            ),
+        ),
+        Spacing.kVerticalSpaceSmall,
+        if (makeCallErrorMessage != null)
+          DisplayMessage(
+            message: makeCallErrorMessage,
           ),
-          Spacing.kVerticalSpaceLarger,
-        ],
-      ),
+        Spacing.kVerticalSpaceSmall,
+        FittedBox(
+          fit: BoxFit.fitWidth,
+          child: BodyInfo(
+            displayIcon: Icons.location_city_outlined,
+            displayTitle: 'Nationality',
+            displayLabel: '${user.nat} - ${user.location?.country}',
+          ),
+        ),
+        Spacing.kVerticalSpaceSmall,
+        FittedBox(
+          fit: BoxFit.fitWidth,
+          child: BodyInfo(
+            displayIcon: Icons.location_on_outlined,
+            displayTitle: '${user.location?.country} , ${user.location?.city}',
+            displayLabel:
+                '${user.location?.state} , ${user.location?.postcode}',
+          ),
+        ),
+        Spacing.kVerticalSpaceLarger,
+      ],
     );
   }
 }

@@ -13,6 +13,7 @@ class DetailPage extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: CustomScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
           SliverAppBar(
             expandedHeight: deviceSize.height * 0.4,
@@ -22,7 +23,7 @@ class DetailPage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
                   padding: Dimessions.kPaddingLarge,

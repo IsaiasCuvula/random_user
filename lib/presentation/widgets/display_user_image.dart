@@ -6,11 +6,13 @@ class DisplayUserImage extends StatelessWidget {
   const DisplayUserImage({
     super.key,
     required this.imageUrl,
-    required this.radius,
+    this.radius,
+    this.isCircleAvatar = true,
   });
 
   final String imageUrl;
-  final double radius;
+  final double? radius;
+  final bool isCircleAvatar;
 
   @override
   Widget build(BuildContext context) {
@@ -26,18 +28,18 @@ class DisplayUserImage extends StatelessWidget {
           size: Dimessions.kIconSizeSmall,
         ),
       ),
-      imageBuilder: (context, imageProvider) => radius == 0
-          ? Container(
+      imageBuilder: (context, imageProvider) => isCircleAvatar
+          ? CircleAvatar(
+              maxRadius: radius,
+              backgroundImage: imageProvider,
+            )
+          : Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: imageProvider,
                   fit: BoxFit.cover,
                 ),
               ),
-            )
-          : CircleAvatar(
-              maxRadius: radius,
-              backgroundImage: imageProvider,
             ),
     );
   }

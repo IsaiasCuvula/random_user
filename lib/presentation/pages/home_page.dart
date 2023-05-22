@@ -40,6 +40,10 @@ class HomePage extends ConsumerWidget {
               ),
             if (user != null) UserCard(user: user),
             if (errorMessage != null) DisplayMessage(message: errorMessage),
+            if (user == null && errorMessage != null)
+              const DisplayMessage(
+                message: 'Connect to the internt to fetch a Random user',
+              ),
             TextButton(
               onPressed: () async {
                 await showDialog(

@@ -18,7 +18,7 @@ class DetailPageHeader extends StatelessWidget {
         aspectRatio: 9 / 16,
         child: DisplayUserImage(
           imageUrl: '${user.picture?.large}',
-          radius: 0,
+          isCircleAvatar: false,
         ),
       ),
     );

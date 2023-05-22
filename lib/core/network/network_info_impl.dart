@@ -7,14 +7,8 @@ class NetworkInfoImpl implements NetworkInfo {
 
   Future<bool> _isConnected() async {
     final connectivity = await Connectivity().checkConnectivity();
-    if (connectivity == ConnectivityResult.mobile) {
-      return true;
-    } else if (connectivity == ConnectivityResult.wifi) {
-      return true;
-    } else if (connectivity == ConnectivityResult.ethernet) {
-      return true;
-    } else {
-      return false;
-    }
+    return connectivity == ConnectivityResult.mobile ||
+        connectivity == ConnectivityResult.wifi ||
+        connectivity == ConnectivityResult.ethernet;
   }
 }

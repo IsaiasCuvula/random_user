@@ -19,4 +19,13 @@ class Username {
       last: json['last'],
     );
   }
+
+  @override
+  String toString() {
+    return jsonEncode({
+      'title': title,
+      'first': first,
+      'last': last,
+    });
+  }
 }

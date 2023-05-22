@@ -19,4 +19,13 @@ class Picture {
       thumbnail: json['thumbnail'],
     );
   }
+
+  @override
+  String toString() {
+    return jsonEncode({
+      'large': large,
+      'medium': medium,
+      'thumbnail': thumbnail,
+    });
+  }
 }

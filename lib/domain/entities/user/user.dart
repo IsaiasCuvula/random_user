@@ -1,9 +1,10 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart' show immutable;
 part 'username.dart';
 part 'picture.dart';
 part 'location.dart';
-part 'coordinates.dart';
 
 @immutable
 class User extends Equatable {
@@ -14,7 +15,6 @@ class User extends Equatable {
   final String? phone;
   final Picture? picture;
   final String? nat;
-  final Coordinates? coordinates;
 
   const User({
     this.gender,
@@ -24,7 +24,6 @@ class User extends Equatable {
     this.picture,
     this.phone,
     this.email,
-    this.coordinates,
   });
 
   @override
@@ -36,6 +35,5 @@ class User extends Equatable {
         picture,
         phone,
         email,
-        coordinates,
       ];
 }

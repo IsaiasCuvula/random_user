@@ -5,15 +5,26 @@ import 'package:random_user/presentation/utils/utils.dart';
 class UserMapper {
   static RandomUserModel fromJson(Map<String, dynamic> map) {
     final user = map['results'].first;
-    return _mapToRandomUserModel(user);
+    return mapToRandomUserModel(user);
+  }
+
+  static Map<String, dynamic> toJson(RandomUserModel randomUser) {
+    return {
+      'gender': randomUser.gender,
+      'name': randomUser.name.toString(),
+      'location': randomUser.location.toString(),
+      'email': randomUser.email,
+      'phone': randomUser.phone,
+      'picture': randomUser.picture.toString(),
+      'nat': randomUser.nat,
+    };
   }
 
   static ListUsersModel fromJsonList(Map<String, dynamic> map) {
     final usersResult = map['results'];
     ListUsersModel usersList = [];
-
     for (var user in usersResult) {
-      final randomUser = _mapToRandomUserModel(user);
+      final randomUser = mapToRandomUserModel(user);
       usersList.add(randomUser);
     }
     return usersList;
@@ -31,7 +42,7 @@ class UserMapper {
     );
   }
 
-  static RandomUserModel _mapToRandomUserModel(dynamic user) {
+  static RandomUserModel mapToRandomUserModel(dynamic user) {
     return RandomUserModel(
       gender: user['gender'],
       name: Username.fromJson(user['name']),

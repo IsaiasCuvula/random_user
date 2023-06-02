@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:random_user/data/data.dart';
 
 class RandomUserRemoteDataSourceMock extends Mock
-    implements RandomUserRemoteDataSourceImpl {}
+    implements RandomUserRemoteDataSource {}
 
 void main() {
   late RandomUserRemoteDataSourceMock dataSourceMock;

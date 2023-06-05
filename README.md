@@ -2,7 +2,7 @@
 [![Flutter version](https://img.shields.io/badge/flutter-stable-blue?logo=flutter)](https://flutter.dev/docs/development/tools/sdk/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
 
-Random User is a Flutter App designed to fetch random user data, explore user details, and search for a specific number of users. Whether it's an iOS or Android device, this app is optimized to deliver a seamless experience. The app demonstrates how to implement Flutter Clean Architecture with Riverpod/flutter_bloc, local cache, and RESTful API integration.
+Random User is a Flutter App designed to fetch random user data, explore user details, and search for a specific number of users. Whether it's an iOS or Android device, this app is optimized to deliver a seamless experience. The app demonstrates how to implement Flutter Clean Architecture with Riverpod, local cache, and RESTful API integration.
 
 
 ## Production level implementations

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:random_user/presentation/presentation.dart';
+import 'package:random_user/features/random_user/random_user.dart';
 import 'routes.dart';
 
 class RoutesConfig {

@@ -23,6 +23,7 @@ dependencies:
   url_launcher: ^6.1.11
   connectivity_plus: ^4.0.1
   cached_network_image: ^3.2.3
+  mocktail: ^0.3.0
 
 dev_dependencies:
   flutter_test:

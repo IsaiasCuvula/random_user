@@ -2,14 +2,15 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:random_user/core/core.dart';
 
 class NetworkInfoImpl implements NetworkInfo {
-  NetworkInfoImpl();
+  final Connectivity connectivity;
+  NetworkInfoImpl({required this.connectivity});
   @override
   Future<bool> get isConnected => _isConnected();
 
   Future<bool> _isConnected() async {
-    final connectivity = await Connectivity().checkConnectivity();
-    return connectivity == ConnectivityResult.mobile ||
-        connectivity == ConnectivityResult.wifi ||
-        connectivity == ConnectivityResult.ethernet;
+    final checkConnectivity = await connectivity.checkConnectivity();
+    return checkConnectivity == ConnectivityResult.mobile ||
+        checkConnectivity == ConnectivityResult.wifi ||
+        checkConnectivity == ConnectivityResult.ethernet;
   }
 }

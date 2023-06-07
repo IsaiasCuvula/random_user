@@ -22,7 +22,7 @@ class UserHttpClientImpl implements UserHttpClient {
             'accept': 'application/json',
           });
     try {
-      final response = await http.get(
+      final response = await client.get(
         Uri.parse(url),
         headers: defaultHeaders,
       );
@@ -32,8 +32,10 @@ class UserHttpClientImpl implements UserHttpClient {
     }
   }
 
-  Future<dynamic> _handleRespose(http.Response response,
-      {bool isListRequest = false}) async {
+  Future<dynamic> _handleRespose(
+    http.Response response, {
+    bool isListRequest = false,
+  }) async {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       final jsonData = jsonDecode(response.body);
       try {
@@ -45,8 +47,6 @@ class UserHttpClientImpl implements UserHttpClient {
       } catch (e) {
         throw ParsingJsonException();
       }
-    } else {
-      throw ServerException();
     }
   }
 }

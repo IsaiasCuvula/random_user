@@ -1,0 +1,66 @@
+{
+    "results": [
+        {
+            "gender": "female",
+            "name": {
+                "title": "Mrs",
+                "first": "Ceyhan",
+                "last": "Akgül"
+            },
+            "location": {
+                "street": {
+                    "number": 8268,
+                    "name": "Anafartalar Cd"
+                },
+                "city": "Elaz",
+                "state": "Mardin",
+                "country": "Turkey",
+                "postcode": 79951,
+                "coordinates": {
+                    "latitude": "66.0705",
+                    "longitude": "176.0623"
+                },
+                "timezone": {
+                    "offset": "+9:00",
+                    "description": "Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                }
+            },
+            "email": "ceyhan.akgul@example.com",
+            "login": {
+                "uuid": "318dd149-cb68-4ba6-9b8e-f23ef8af7a95",
+                "username": "whitezebra218",
+                "password": "lucas1",
+                "salt": "TzFRNAIU",
+                "md5": "692afd5372373b3841e3e6761eeaae35",
+                "sha1": "23b8d51e467d3b904b05fa2a576f26c5c8463fe8",
+                "sha256": "103e75972eb59d6bdafc13a9720aa5596c008db84ce01ead99c0c68cab02cd1e"
+            },
+            "dob": {
+                "date": "1956-05-27T17:38:17.685Z",
+                "age": 67
+            },
+            "registered": {
+                "date": "2020-05-22T19:51:35.728Z",
+                "age": 3
+            },
+            "phone": "(569)-465-3718",
+            "cell": "(464)-802-4404",
+            "id": {
+                "name": "",
+                "value": null
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/94.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/94.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/94.jpg"
+            },
+            "nat": "TR"
+        }
+    ],
+    "info": {
+        "seed": "a43145898acf9216",
+        "results": 1,
+        "page": 1,
+        "version": "1.4"
+    }
+}

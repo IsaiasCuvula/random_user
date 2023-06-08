@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
 import 'package:random_user/core/core.dart';
 import 'package:random_user/features/random_user/random_user.dart';
-
 import '../../../../fixtures/fixture_reader.dart';
 
 class MockClient extends Mock implements http.Client {}

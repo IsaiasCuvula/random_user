@@ -2,14 +2,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:random_user/features/random_user/random_user.dart';
 
 class ListRandomUsersNotifier extends StateNotifier<ListRandomUsersState> {
-  ListRandomUsersNotifier(this._randomUserRepository)
+  ListRandomUsersNotifier(this._randomUsers)
       : super(const ListRandomUsersState(isLoading: false));
 
-  final RandomUserRepository _randomUserRepository;
+  final GetListOfRandomUsers _randomUsers;
 
   Future<void> fetchListRandomUsers(int number) async {
     state = const ListRandomUsersState(isLoading: true);
-    final result = await _randomUserRepository.getListOfRandomUsers(number);
+    final result = await _randomUsers(number);
     state = result.fold(
       (failure) => ListRandomUsersState(
         isLoading: false,

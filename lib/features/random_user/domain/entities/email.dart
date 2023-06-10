@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:random_user/features/random_user/random_user.dart';
 
-class Email {
+class Email extends Equatable {
   final String recipient;
   final String subject;
   final String body;
@@ -22,4 +23,7 @@ class Email {
       body: body,
     );
   }
+
+  @override
+  List<Object?> get props => [recipient, subject, body];
 }

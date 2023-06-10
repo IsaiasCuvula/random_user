@@ -11,7 +11,7 @@ class HomePage extends ConsumerWidget {
     final randomUserState = ref.watch(singleRandomUserProvider);
     final user = randomUserState.user;
     final isLoading = randomUserState.isLoading;
-    final errorMessage = randomUserState.erroMessage;
+    final errorMessage = randomUserState.errorMessage;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
@@ -19,6 +19,7 @@ class HomePage extends ConsumerWidget {
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
+            key: const Key('refresh_btn'),
             onPressed: () async {
               await ref.read(singleRandomUserProvider.notifier).getRandomUser();
             },
@@ -36,15 +37,22 @@ class HomePage extends ConsumerWidget {
             Spacing.kVerticalSpaceLarger,
             if (isLoading)
               const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  key: Key('CircularProgressIndicator'),
+                ),
               ),
-            if (user != null) UserCard(user: user),
-            if (errorMessage != null) DisplayMessage(message: errorMessage),
+            if (user != null) UserCard(user: user, key: const Key('user_card')),
+            if (errorMessage != null)
+              DisplayMessage(
+                key: const Key('DisplayMessage'),
+                message: errorMessage,
+              ),
             if (user == null && errorMessage != null)
               const DisplayMessage(
                 message: 'Connect to the internt to fetch a Random user',
               ),
             TextButton(
+              key: const Key('see_more_users_btn'),
               onPressed: () async {
                 await showDialog(
                   context: context,

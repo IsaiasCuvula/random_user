@@ -13,7 +13,7 @@ class ListRandomUsersNotifier extends StateNotifier<ListRandomUsersState> {
     state = result.fold(
       (failure) => ListRandomUsersState(
         isLoading: false,
-        erroMessage: Helpers.failureToMessage(failure),
+        errorMessage: Helpers.failureToMessage(failure),
       ),
       (randomUsers) => ListRandomUsersState(
         users: randomUsers,

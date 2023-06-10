@@ -13,7 +13,7 @@ class ListUsersPage extends ConsumerWidget {
     final listRandomUserState = ref.watch(listRandomUserProvider);
     final users = listRandomUserState.users;
     final isLoading = listRandomUserState.isLoading;
-    final errorMessage = listRandomUserState.erroMessage;
+    final errorMessage = listRandomUserState.errorMessage;
     return Scaffold(
       appBar: AppBar(
         elevation: 0,

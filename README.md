@@ -8,6 +8,7 @@ Random User is a Flutter App designed to fetch random user data, explore user de
 ## Production level implementations
 
 - CI/CD with [GitHub Actions](https://github.com/features/actions)
+- Unit Test 
 
 ## Installation
 - Clone the repo

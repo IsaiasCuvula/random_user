@@ -9,7 +9,7 @@ void main() {
   late ProviderContainer providerContainer;
   late Database database;
 
-  setUpAll(() async {
+  setUp(() async {
     providerContainer = ProviderContainer();
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;

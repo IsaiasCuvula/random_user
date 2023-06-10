@@ -27,14 +27,14 @@ void main() {
   });
 
   test(
-      'singleRandomUserProvider should returns an instance of SingleRandomUserState...',
+      'listRandomUserProvider should returns an instance of ListRandomUsersState...',
       () {
     //arrange
 
     //act
-    final result = providerContainer.read(singleRandomUserProvider);
+    final result = providerContainer.read(listRandomUserProvider);
 
     //assert
-    expect(result, isA<SingleRandomUserState>());
+    expect(result, isA<ListRandomUsersState>());
   });
 }

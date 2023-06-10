@@ -24,7 +24,6 @@ void main() {
   late UserHttpClient httpClient;
   late NetworkInfo networkInfo;
   late MockConnectivity connectivity;
-  late RandomUser tRandomUser;
   late Map<String, String> headers;
   late String url;
   late Database database;
@@ -55,7 +54,6 @@ void main() {
       json.decode(fixture('random_user.json')),
     );
     registerFallbackValue(userModel);
-    tRandomUser = UserMapper.toEntity(userModel);
     //network
     connectivity = MockConnectivity();
     mockHttpClient = MockHttpClient();

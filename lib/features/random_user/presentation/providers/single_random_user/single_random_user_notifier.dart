@@ -16,7 +16,7 @@ class SingleRandomUserNotifier extends StateNotifier<SingleRandomUserState> {
     state = result.fold(
       (failure) => SingleRandomUserState(
         isLoading: false,
-        erroMessage: Helpers.failureToMessage(failure),
+        errorMessage: Helpers.failureToMessage(failure),
       ),
       (randomUser) => SingleRandomUserState(
         isLoading: false,

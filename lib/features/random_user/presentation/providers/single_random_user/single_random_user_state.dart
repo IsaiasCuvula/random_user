@@ -12,18 +12,6 @@ class SingleRandomUserState extends Equatable {
     required this.isLoading,
   });
 
-  SingleRandomUserState copyWith({
-    RandomUser? user,
-    bool? isLoading,
-    String? errorMessage,
-  }) {
-    return SingleRandomUserState(
-      user: user ?? this.user,
-      isLoading: isLoading ?? this.isLoading,
-      errorMessage: errorMessage ?? this.errorMessage,
-    );
-  }
-
   @override
   List<Object?> get props => [user, isLoading, errorMessage];
 }

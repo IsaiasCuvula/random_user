@@ -54,7 +54,3 @@ jobs:
             artifacts: "build/app/outputs/bundle/release/app-release.aab, build/ios/iphoneos/app.ipa"
             tag: "refs/tags/v1.0.${{ github.run_number }}"
             token: ${{ secrets.TOKEN }}
-
-
-# push to master, main, develop
-# pull request on main master

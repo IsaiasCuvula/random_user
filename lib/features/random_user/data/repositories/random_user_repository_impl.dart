@@ -54,7 +54,7 @@ class RandomUserRepositoryImpl extends RandomUserRepository {
     } else {
       try {
         final localUserModel = await localDataSource.getLastRandomUser();
-        return right(UserMapper.toEntity(localUserModel));
+        return Right(UserMapper.toEntity(localUserModel));
       } on CacheException {
         return Left(CacheFailure());
       }

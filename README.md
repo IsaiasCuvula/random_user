@@ -49,7 +49,7 @@ Key Features:
 
 🗺️ GoRoute for Navigation: With GoRoute navigation library, UserFetcher delivers a smooth and intuitive navigation experience. Seamlessly switch between screens, and explore user profiles.
 
-🚀 Riverpod for State Management: UserFetcher utilizes either Riverpod or Bloc, two popular state management solutions. These robust libraries ensure efficient state handling, enabling a responsive and interactive app experience.
+🚀 Riverpod for State Management: RandomUser utilizes Riverpod for state management solutions to ensure efficient state handling, enabling a responsive and interactive app experience.
 
 🔀 Fetch Random User: Get a Random user as soon you open the App.
 

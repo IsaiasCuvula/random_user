@@ -25,12 +25,12 @@ class UserCard extends ConsumerWidget {
           color: Colors.green,
         ),
         Container(
-          margin: Dimessions.kMarginLarge,
+          margin: Dimensions.kMarginLarge,
           height: deviceSize.height * 0.3,
           width: deviceSize.width,
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: Dimessions.kBorderSmall,
+            borderRadius: Dimensions.kBorderSmall,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

@@ -25,7 +25,7 @@ class DetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: Dimessions.kPaddingLarge,
+                  padding: Dimensions.kPaddingLarge,
                   child: DetailPageBody(user: user),
                 ),
               ],

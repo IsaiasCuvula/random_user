@@ -18,7 +18,7 @@ class UserIconAction extends StatelessWidget {
       icon: Icon(
         displayIcon,
         color: Colors.green,
-        size: Dimessions.kIconSizeSmall,
+        size: Dimensions.kIconSizeSmall,
       ),
     );
   }

@@ -25,7 +25,7 @@ class DisplayUserImage extends StatelessWidget {
         child: Icon(
           Icons.error,
           color: Colors.green,
-          size: Dimessions.kIconSizeSmall,
+          size: Dimensions.kIconSizeSmall,
         ),
       ),
       imageBuilder: (context, imageProvider) => isCircleAvatar

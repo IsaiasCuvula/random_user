@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Dimessions {
+class Dimensions {
   //Dimensions
   static const EdgeInsets kMarginLarge = EdgeInsets.all(20.0);
   static const EdgeInsets kPaddingLarge = EdgeInsets.all(20.0);

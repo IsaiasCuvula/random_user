@@ -42,7 +42,7 @@ class BodyInfo extends StatelessWidget {
             ),
             if (displayButtonText != null)
               InkWell(
-                borderRadius: Dimessions.kBorderSmall,
+                borderRadius: Dimensions.kBorderSmall,
                 onTap: onTap,
                 child: Text(
                   displayButtonText.toString(),

@@ -33,7 +33,7 @@ class ListUsersPage extends ConsumerWidget {
         ],
       ),
       body: Padding(
-        padding: Dimessions.kPaddingLarge,
+        padding: Dimensions.kPaddingLarge,
         child: Column(
           children: [
             if (isLoading)

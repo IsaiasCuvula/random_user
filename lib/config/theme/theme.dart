@@ -1,3 +1,3 @@
 export 'app_theme.dart';
-export 'dimessions.dart';
+export 'dimensions.dart';
 export 'spacing.dart';
